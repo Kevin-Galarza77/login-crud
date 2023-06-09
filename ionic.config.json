@@ -1,0 +1,7 @@
+{
+  "name": "login-crud",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
