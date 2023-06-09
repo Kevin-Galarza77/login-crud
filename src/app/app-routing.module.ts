@@ -6,25 +6,31 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
-	{
-		path: '',
-		loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
-		...canActivate(redirectLoggedInToHome)
-	},
-	{
-		path: 'home',
-		loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
-		...canActivate(redirectUnauthorizedToLogin)
-	},
-	{
-		path: '**',
-		redirectTo: '',
-		pathMatch: 'full'
-	}
+  {
+    path: '',
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
+    ...canActivate(redirectLoggedInToHome)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+
+  {
+    path: 'crud',
+    loadChildren: () => import('./crud/crud.module').then(m => m.CrudPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
