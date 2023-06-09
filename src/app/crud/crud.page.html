@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
-	<ion-toolbar color="primary">
-		<ion-buttons slot="start">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
       <ion-button color="danger" routerLink="/Avatar">Avatar</ion-button>
-		</ion-buttons>
-	</ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -12,4 +12,26 @@
       <ion-title size="large">crud</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="container-fluid">
+    <table class="table table-secondary">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>PLACA</th>
+          <th>COLOR</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.id }}</td>
+          <td>{{ car.placa }}</td>
+          <td>{{ car.color }}</td>
+          <td><ion-button (click)="updateCar(car.id)" color="success">Editar</ion-button><ion-button (click)="deleteCar(car.id)" color="danger">Eliminar</ion-button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </ion-content>
